@@ -1,12 +1,10 @@
-package com.csci448.tybrown.mapit;
+package com.csci448.tcranor.mapit;
 
 import com.google.android.gms.maps.model.LatLng;
 
 import java.util.Date;
 
-/**
- * Created by tybrown on 4/9/17.
- */
+
 
 public class Pin {
     private Date time;

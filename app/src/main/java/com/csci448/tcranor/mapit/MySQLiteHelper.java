@@ -1,8 +1,6 @@
-package com.csci448.tybrown.mapit;
+package com.csci448.tcranor.mapit;
 
-/**
- * Created by tybrown on 4/10/17.
- */
+
 
 import android.content.Context;
 import android.database.sqlite.SQLiteDatabase;

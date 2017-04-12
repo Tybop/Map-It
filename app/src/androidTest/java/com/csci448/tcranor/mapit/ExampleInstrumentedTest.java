@@ -1,4 +1,4 @@
-package com.csci448.tybrown.mapit;
+package com.csci448.tcranor.mapit;
 
 import android.content.Context;
 import android.support.test.InstrumentationRegistry;

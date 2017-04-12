@@ -1,13 +1,10 @@
-package com.csci448.tybrown.mapit;
+package com.csci448.tcranor.mapit;
 
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
 import android.support.v7.app.AppCompatActivity;
 
-/**
- * Created by tybrown on 4/9/17.
- */
 
 public abstract class SingleFragmentActivity extends AppCompatActivity {
     protected abstract Fragment createFragment();

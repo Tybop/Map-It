@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-    package="com.csci448.tybrown.mapit">
+    package="com.csci448.tcranor.mapit">
 
     <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION" />
     <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
@@ -21,7 +21,7 @@
             ></meta-data>
 
 
-        <activity android:name="com.csci448.tybrown.mapit.activity_map">
+        <activity android:name="com.csci448.tcranor.mapit.activity_map">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 

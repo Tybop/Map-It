@@ -1,4 +1,4 @@
-package com.csci448.tybrown.mapit;
+package com.csci448.tcranor.mapit;
 
 import org.junit.Test;
 

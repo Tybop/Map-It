@@ -6,7 +6,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:fitsSystemWindows="true"
-    tools:context="com.csci448.tybrown.mapit.SingleFragmentActivity">
+    tools:context="com.csci448.tcranor.mapit.com.csci448.tcranor.mapit.SingleFragmentActivity">
 
     <FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
         android:id="@+id/fragmentContainer"

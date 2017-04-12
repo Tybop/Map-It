@@ -1,4 +1,4 @@
-package com.csci448.tybrown.mapit;
+package com.csci448.tcranor.mapit;
 
 import android.content.Context;
 import android.content.pm.PackageManager;
@@ -14,9 +14,13 @@ import android.support.v4.app.FragmentActivity;
 import android.support.v4.content.ContextCompat;
 import android.util.Log;
 import android.view.LayoutInflater;
+import android.view.Menu;
+import android.view.MenuInflater;
+import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.google.android.gms.common.ConnectionResult;
 import com.google.android.gms.common.api.GoogleApiClient;
@@ -36,7 +40,7 @@ import java.util.Date;
 import java.util.HashMap;
 
 /**
- * Created by tybrown on 4/9/17.
+ * Created by tcranor on 4/9/17.
  * TODO :
  * Add database
  * Query marker data from weather
@@ -46,7 +50,7 @@ import java.util.HashMap;
 public class fragment_map extends Fragment implements
         OnMapReadyCallback,
         GoogleApiClient.ConnectionCallbacks,
-        GoogleApiClient.OnConnectionFailedListener{
+        GoogleApiClient.OnConnectionFailedListener {
 
     private static final String TAG = "<MAP>";
     private Context mContext;
@@ -126,6 +130,29 @@ public class fragment_map extends Fragment implements
                 checkIn();
             }
         });
+        setHasOptionsMenu(true);
+    }
+
+    @Override
+    public void onCreateOptionsMenu(Menu menu, MenuInflater inflater) {
+        super.onCreateOptionsMenu(menu, inflater);
+        inflater.inflate(R.menu.main_menu, menu);
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        switch (item.getItemId()) {
+            case R.id.menu_item_clear_history:
+                datasource.deletePins();
+                mPins.clear();
+                mMap.clear();
+                Toast.makeText(getActivity(), "Data Cleared",
+                        Toast.LENGTH_LONG).show();
+
+                return true;
+            default:
+                return super.onOptionsItemSelected(item);
+        }
     }
 
     private void checkIn() {
@@ -172,10 +199,10 @@ public class fragment_map extends Fragment implements
     @Override
     public void onMapReady(GoogleMap googleMap) {
         mMap = googleMap;
-        mMap.setPadding(0,50,0,0);
+        mMap.setPadding(0, 50, 0, 0);
 
         // On tapping the marker.
-        mMap.setOnMarkerClickListener(new GoogleMap.OnMarkerClickListener(){
+        mMap.setOnMarkerClickListener(new GoogleMap.OnMarkerClickListener() {
             @Override
             public boolean onMarkerClick(Marker marker) {
                 // Get the selected pin.
@@ -214,7 +241,7 @@ public class fragment_map extends Fragment implements
                 View infoWindow = mInflater.inflate(R.layout.custom_info_contents, null);
 
                 TextView latLngInfo = (TextView) infoWindow.findViewById(R.id.title);
-                latLngInfo.setText("lat/lng: ("+ String.valueOf(pos.latitude) + ","+ String.valueOf(pos.longitude) + ")");
+                latLngInfo.setText("lat/lng: (" + String.valueOf(pos.latitude) + "," + String.valueOf(pos.longitude) + ")");
 
                 return infoWindow;
             }
@@ -238,10 +265,11 @@ public class fragment_map extends Fragment implements
 
     /**
      * Generate Markers and build a hashmap with markers' id and their pins.
+     *
      * @param values
      */
     private void generateMarkers(ArrayList<Pin> values) {
-        for(Pin pin : values) {
+        for (Pin pin : values) {
             Marker marker = mMap.addMarker(new MarkerOptions()
                     .position(pin.getPos()));
             mPins.put(marker.getId(), pin);
@@ -339,7 +367,7 @@ public class fragment_map extends Fragment implements
         positions.add(b);
         positions.add(c);
 
-        for(LatLng pos : positions) {
+        for (LatLng pos : positions) {
             Pin pin = new Pin(new Date(), pos);
             datasource.addPin(pin);
         }

@@ -1,8 +1,6 @@
-package com.csci448.tybrown.mapit;
+package com.csci448.tcranor.mapit;
 
-/**
- * Created by tybrown on 4/10/17.
- */
+
 import java.util.ArrayList;
 import java.util.Date;
 
@@ -55,6 +53,7 @@ public class PinsDataSource {
 
     public void deletePins() {
         database.delete(MySQLiteHelper.TABLE_PINS, null, null);
+
     }
 
     public ArrayList<Pin> getAllPins() {
